@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Care | MindEase - Stress Relief</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5faff;
+            color: #333;
+        }
+
+        /* Header styling */
+        .main-header {
+            background: #ffeef6;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo styling */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        /* Navbar styling */
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        .navbar .nav-links li a {
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            color: #555;
+            font-weight: 500;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(255,182,193,0.3);
+        }
+
+        .navbar .nav-links li a:hover {
+            background-color: #fff;
+            color: #0077b6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Section Styling */
+        .self-care-section {
+            margin: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .self-care-checklist button,
+        .self-care-journal button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .self-care-checklist button:hover,
+        .self-care-journal button:hover {
+            background-color: #f5faff; /* Fixed redundant declaration */
+        }
+
+        .activity-suggestions .activity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .activity-suggestions .icon {
+            font-size: 40px;
+            margin-right: 10px;
+        }
+
+        .self-care-gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #f5faff; /* Fixed repeated declaration */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Textarea for Self-Care Journal */
+        #journal-entry {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            resize: none;
+        }
+
+        /* Ensure responsive images */
+        @media (max-width: 600px) {
+            .self-care-gallery img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section (Same as home.html) -->
+    <header class="main-header">
+        <div class="logo">🌸 MindEase</div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="meditation.html">Meditation</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="timer.html">Timer</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Self-Care Introduction -->
+    <section class="self-care-section self-care-intro">
+        <h2>Why Self-Care Matters</h2>
+        <p>Self-care is an essential part of maintaining balance in our lives. It's about making time for activities that nourish your body, mind, and spirit. Whether it's taking a bubble bath, reading your favorite book, or practicing mindfulness, self-care helps you reset, recharge, and manage stress effectively.</p>
+    </section>
+
+    <!-- Self-Care Checklist -->
+    <section class="self-care-section self-care-checklist">
+        <h3>Your Self-Care Checklist</h3>
+        <form id="checklist-form">
+            <label><input type="checkbox" name="activity" value="Take a walk"> Take a walk outside</label><br>
+            <label><input type="checkbox" name="activity" value="Read a book"> Read a book</label><br>
+            <label><input type="checkbox" name="activity" value="Practice yoga"> Practice yoga</label><br>
+            <label><input type="checkbox" name="activity" value="Meditate"> Meditate for 10 minutes</label><br>
+            <label><input type="checkbox" name="activity" value="Take a bubble bath"> Take a bubble bath</label><br>
+            <label><input type="checkbox" name="activity" value="Write in journal"> Write in a journal</label><br>
+            <button type="submit">Submit Checklist</button>
+        </form>
+    </section>
+
+    <!-- Self-Care Activity Suggestions -->
+    <section class="self-care-section activity-suggestions">
+        <h3>Self-Care Activities</h3>
+        <div class="activity">
+            <i class="icon">🧘‍♀️</i>
+            <h4>Yoga</h4>
+            <p>Yoga helps relieve stress, improve flexibility, and bring mindfulness to your day.</p>
+        </div>
+        <div class="activity">
+            <i class="icon">🛁</i>
+            <h4>Bubble Bath</h4>
+            <p>Relax and unwind with a soothing bubble bath to calm your mind and body.</p>
+        </div>
+        <div class="activity">
+            <i class="icon">📖</i>
+            <h4>Read a Book</h4>
+            <p>Reading can transport you to a different world and provide a healthy escape from stress.</p>
+        </div>
+        <div class="activity">
+            <i class="icon">🎶</i>
+            <h4>Listen to Music</h4>
+            <p>Music has been shown to reduce anxiety and improve overall mood.</p>
+        </div>
+    </section>
+
+    <!-- Self-Care Journal -->
+    <section class="self-care-section self-care-journal">
+        <h3>Self-Care Journal</h3>
+        <textarea id="journal-entry" placeholder="Write about your self-care today..."></textarea>
+        <button onclick="saveJournalEntry()">Save Journal Entry</button>
+    </section>
+
+    <!-- Tips for Building a Self-Care Routine -->
+    <section class="self-care-section self-care-tips">
+        <h3>How to Build Your Self-Care Routine</h3>
+        <ul>
+            <li>Start small: Pick one activity to focus on each day.</li>
+            <li>Set a time: Allocate a specific time for your self-care activities.</li>
+            <li>Make it enjoyable: Choose activities that truly relax and energize you.</li>
+            <li>Stick to it: Consistency is key to reaping the benefits of self-care.</li>
+        </ul>
+    </section>
+
+    <!-- Visual Gallery of Self-Care -->
+    <section class="self-care-section self-care-gallery">
+        <h3>Visual Inspiration</h3>
+        <div class="gallery">
+            <img src="bubble-bath.jpg" alt="Bubble Bath">
+            <img src="yoga.jpg" alt="Yoga">
+            <img src="reading.jpg" alt="Reading a Book">
+            <img src="music.jpg" alt="Listening to Music">
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-nav">
+            <a href="home.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 MindEase - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function saveJournalEntry() {
+            const entry = document.getElementById("journal-entry").value;
+            if (entry) {
+                alert("Your self-care journal entry has been saved!");
+                document.getElementById("journal-entry").value = ""; // Clear the text area after saving
+            } else {
+                alert("Please write something in your journal.");
+            }
+        }
+    </script>
+</body>
+</html>

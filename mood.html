@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindEase Mood Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"> <!-- Linking your shared style.css for navbar -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mood-wrapper {
+      padding: 100px 20px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .mood-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      animation: fadeInUp 1s ease;
+    }
+
+    .mood-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .mood-card {
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      border-radius: 16px;
+      padding: 25px 10px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border: none;
+    }
+
+    .mood-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .mood-card.active {
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .mood-card.active .mood-label {
+      color: white;
+    }
+
+    .mood-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .mood-label {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .mood-feedback {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #444;
+      font-style: italic;
+      transition: all 0.4s ease;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Card Styling */
+.eat-card {
+      background-color: #f0f8ff; /* Light cool color */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .eat-card:hover {
+      transform: translateY(-5px); /* Slightly lift the card */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .eat-card h2 {
+      color: #004b6c; /* Darker cool color for text */
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .eat-card p {
+      color: #5b9bd5; /* Lighter blue for the body text */
+      font-size: 1.1em;
+    }
+
+    /* Hover effect for the link */
+    .eat-card a {
+      text-decoration: none;
+      color: #004b6c;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .eat-card a:hover {
+      text-decoration: underline;
+      color: #0078d4;
+    }
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Header/Navbar (Copied from home.html) -->
+  <header class="main-header">
+    <div class="logo">🌸 MindEase</div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="meditation.html">Meditation</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="timer.html">Timer</a></li>
+        <li><a href="signin.html">Sign in</a></li>
+        <li><a href="mood.html" class="active">Mood Tracker</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ✅ Mood Tracker Section -->
+  <div class="mood-wrapper">
+    <div class="mood-container">
+      <h2>🌈 How Are You Feeling Today?</h2>
+      <div class="mood-grid">
+        <div class="mood-card" onclick="selectMood('😊 Happy', event)">
+          <div class="mood-icon">😊</div>
+          <div class="mood-label">Happy</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('😢 Sad', event)">
+          <div class="mood-icon">😢</div>
+          <div class="mood-label">Sad</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('😠 Angry', event)">
+          <div class="mood-icon">😠</div>
+          <div class="mood-label">Angry</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('😌 Calm', event)">
+          <div class="mood-icon">😌</div>
+          <div class="mood-label">Calm</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('😐 Neutral', event)">
+          <div class="mood-icon">😐</div>
+          <div class="mood-label">Neutral</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('😴 Tired', event)">
+          <div class="mood-icon">😴</div>
+          <div class="mood-label">Tired</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('😕 Confused', event)">
+          <div class="mood-icon">😕</div>
+          <div class="mood-label">Confused</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('🤩 Excited', event)">
+          <div class="mood-icon">🤩</div>
+          <div class="mood-label">Excited</div>
+        </div>
+        <div class="mood-card" onclick="selectMood('🥳 Celebrate', event)">
+          <div class="mood-icon">🥳</div>
+          <div class="mood-label">Celebrate</div>
+        </div>
+      </div>
+      <div class="mood-feedback" id="moodFeedback">Select a mood to begin 🧠</div>
+    </div>
+  </div>
+
+
+
+ <!-- Card with "Did you eat?" message -->
+ <section class="eat-section" style="text-align: center; margin-top: 50px;">
+  <div class="eat-card" onclick="window.location.href='diet.html';">
+    <h2>Did you eat today?</h2>
+    <p>Tap to explore healthy food options, meal trackers, and tips!</p>
+    <a href="diet.html">Go to Diet Plan</a>
+  </div>
+</section>
+
+
+  <!-- ✅ Mood Selection Script -->
+  <script>
+    function selectMood(mood, event) {
+      const cards = document.querySelectorAll('.mood-card');
+      cards.forEach(card => card.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const feedbackMsg = document.getElementById("moodFeedback");
+      const messages = {
+        "😊 Happy": "Yay! Keep spreading positivity! 🌞",
+        "😢 Sad": "It’s okay to feel sad. You’re not alone 💙",
+        "😠 Angry": "Take a deep breath… you’ve got this 💢",
+        "😌 Calm": "Peaceful vibes are powerful 🌿",
+        "😐 Neutral": "Every emotion matters. You're doing great 🤗",
+        "😴 Tired": "Rest is important. Take it slow 💤",
+        "😕 Confused": "Clarity will come. Breathe 🌀",
+        "🤩 Excited": "Energy is contagious! Enjoy the thrill ⚡",
+        "🥳 Celebrate": "Have a blast! Enjoy the moment ⚡",
+      };
+      feedbackMsg.innerHTML = messages[mood] || "Thanks for sharing how you feel ❤️";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+    
+  
+ 

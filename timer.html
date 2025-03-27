@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindEase - Meditation Timer</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'ariel', sans-serif;
+      background: linear-gradient(to right, #d5f3ff, #f6e6ff);
+    }
+
+    /* Header Styling */
+    .main-header {
+      background-color:#ffeef6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #7b3fe4;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #7b3fe4;
+    }
+
+    /* Flex Container for Timer and Image Bubble */
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 300px;;
+    }
+
+    /* Timer Box */
+    .timer-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 320px;
+      animation: floatIn 1.5s ease;
+    }
+
+    .timer-display {
+      font-size: 60px;
+      color: #6414ed;
+      margin-bottom: 20px;
+    }
+
+    .controls button {
+      background-color: #7b3fe4;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      margin: 8px;
+      font-size: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .controls button:hover {
+      background-color: #a17bf8;
+      transform: scale(1.05);
+    }
+
+    /* Audio Info */
+    .audio-title {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Picture Bubble */
+    .bubble-image {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-color: #f2f2f2;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+      background-image: url("zen.jpg"); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      animation: breathingBubble 6s ease-in-out infinite;
+    
+
+    }
+
+    #meditation-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+gap: 50px;
+
+  flex-wrap: wrap;
+}
+
+
+    /* Animations */
+    @keyframes breathingBubble {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header from home.html -->
+  <header class="main-header">
+    <div class="logo">🌸 MindEase</div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="meditation.html">Meditation</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="timer.html">Timer</a></li>
+        <li><a href="self.html">Self</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <section class="flex-container">
+    <!-- Timer Box -->
+    <div class="timer-box">
+      <div class="timer-display" id="timer">05:00</div>
+      <div class="controls">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+        <button onclick="restartTimer()">Restart</button>
+      </div>
+      <div class="audio-title" id="audioTitle">Now Playing: Soothing Breathing Music</div>
+      <audio id="meditationAudio" loop>
+        <source src="./emotional-piano-music-256262.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Breathing Panda Bubble -->
+    <div class="bubble-image">
+      <div img src="./zen.jpg" alt="Breathing Panda" /></div>
+    </div>
+  </section>
+
+  <script>
+    let timerDuration = 300;
+    let currentTime = timerDuration;
+    let timerInterval;
+    const timerDisplay = document.getElementById("timer");
+    const audio = document.getElementById("meditationAudio");
+
+    function updateDisplay() {
+      let minutes = Math.floor(currentTime / 60);
+      let seconds = currentTime % 60;
+      timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      if (!timerInterval) {
+        timerInterval = setInterval(() => {
+          if (currentTime > 0) {
+            currentTime--;
+            updateDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+          }
+        }, 1000);
+        audio.play();
+      }
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      audio.pause();
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      currentTime = timerDuration;
+      updateDisplay();
+      audio.currentTime = 0;
+    }
+
+    function restartTimer() {
+      resetTimer();
+      startTimer();
+    }
+
+    // Initialize display
+    updateDisplay();
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Full-screen background images */
+    .image-container {
+      position: fixed; /* Fixed to keep it in place when scrolling */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Ensures the background is behind the form */
+    }
+
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('./logo.jpg'); /* Replace with your background image */
+      background-size: cover; /* Ensures it covers the full screen */
+      background-position: center;
+    }
+
+    .foreground-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('./back.jpg'); /* Replace with your foreground image */
+      background-size: cover;
+      background-position: center;
+      mix-blend-mode: screen;
+      opacity: 0.7; /* Add some transparency to the foreground image */
+    }
+
+    /* Container for centering the form */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Styling for the login form container */
+    .login-container {
+      width: 22rem;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.8); /* Slight transparency for background */
+      border-radius: 10px;
+      box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Styling for form elements */
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Image containers for the background and foreground -->
+  <div class="image-container">
+    <div class="background-image"></div>
+    <div class="foreground-image"></div>
+  </div>
+
+  <!-- Container to center the form -->
+  <div class="container">
+    <!-- Login Form Container -->
+    <div class="login-container">
+      <h2>Login</h2>
+      <form action="#" method="post">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
